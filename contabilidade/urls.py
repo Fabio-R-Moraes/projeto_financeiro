@@ -1,7 +1,6 @@
 from django.urls import path
-from contabilidade.views import homepage, contas
+from contabilidade.views import IndexView
 
 urlpatterns = [
-    path('', homepage),
-    path('contas/', contas),
+    path('', IndexView.as_view(), name='homepage'),
 ]

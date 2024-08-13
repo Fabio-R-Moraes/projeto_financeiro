@@ -1,8 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.views.generic import ListView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from .models import Conta
 
-def homepage(request):
-    return render(request, 'homepage.html')
-
-def contas(request):
-    return HttpResponse("Contas Financeiras...")
+class IndexView(ListView):
+    models = Conta
+    template_name = 'homepage.html'
+    queryset = Conta.objects.all()
+    context_object_name = 'contas'
