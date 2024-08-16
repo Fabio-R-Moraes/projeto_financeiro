@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+<body>
+    {% block conteudo %}
+    <main>
+        <div class="container-fluid">
+            <div id="conta-nova">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h3 class="main-title">Nova Conta</h3>
+                        </div>
+                        <!-- Dividindo em duas colunas da mesma largura -->
+                        <div class="col-md-6">
+                            <img class="img-fluid" src="{% static 'img/agencia.jpg' %}" alt="Fachada de uma empresa">
+                        </div>
+                        <div class="col-md-6">
+                            <h3 class="about-title">Uma nova conta financeira</h3>
+                            <form action="{% url 'contabilidade:create_conta' %}" method="POST">
+                                {% csrf_token %}
+                                <div class="form-content form-content-grid">
+                                    <div class="form-check form-switch">
+                                        {% if form.ativo.value == True %}
+                                        <input class="form-check-input" type="checkbox" checked>
+                                        {% else %}
+                                        <input class="form-check-input" type="checkbox">
+                                        {% endif %}
+                                        <label class="form-check-label" for="{{ form.ativo.label }}">
+                                            {{ form.ativo.label }}
+                                        </label>
+                                        {% if form.ativo.help_text %}
+                                        <p class="help_text">{{ form.ativo.help_text }}</p>
+                                        {% endif %}
+
+                                        {{ form.ativo.errors }}
+                                    </div>
+                                    {% for campos in form %}
+                                    {% if campos.label != "Status" %}
+                                    <div class="form-group">
+                                        <label for="{{ campos.id_for_label }}">{{ campos.label }}</label>
+                                        {{ campos }}
+
+                                        {% if campos.help_text %}
+                                        <p class="help_text">{{ campos.help_text }}</p>
+                                        {% endif %}
+
+                                        {{ campos.errors }}
+                                    </div>
+                                    {% endif %}
+                                    {% endfor %}
+                                    <div class="form-group">
+                                        <button type="submit">Enviar</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    {% endblock conteudo %}
+</body>
+
+</html>
