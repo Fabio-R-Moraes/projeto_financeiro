@@ -1,4 +1,3 @@
-from django.shortcuts import render, redirect
 from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import Conta
@@ -16,3 +15,19 @@ class CreateContaView(CreateView):
     template_name = 'conta_nova.html'
     form_class = ContaModelForm
     success_url = reverse_lazy('contabilidade:nova_conta')
+
+class UpdateContaView(UpdateView):
+    model = Conta
+    template_name = 'conta_nova.html'
+    fields = [
+        'ativo',
+        'nome',
+        'descricao',
+        'saldo'
+    ]
+    success_url = reverse_lazy('contabilidade:homepage')
+
+class DeleteContaView(DeleteView):
+    model = Conta
+    template_name = 'conta_del.html'
+    success_url = reverse_lazy('contabilidade:homepage')

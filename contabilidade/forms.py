@@ -12,7 +12,6 @@ class ContaModelForm(forms.ModelForm):
         min_length= 4,
         max_length=100,
         error_messages={
-            'required':'Esse campo é obrigatório',
             'min_length':'O nome de uma conta precisa de no mínimo 4 caracteres',
             'max_length':'O nome da conta não pode ultrapassar 100 caracteres',
         },
@@ -33,7 +32,10 @@ class ContaModelForm(forms.ModelForm):
         required=False,
         max_digits=9,
         decimal_places=2,
-        default=0.0
+        min_value=0,
+        error_messages={
+            'min_value':'O saldo não pode ser menor que zero',
+        }
     )
     
     class Meta:

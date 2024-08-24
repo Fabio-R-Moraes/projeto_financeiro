@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+<body>
+    {% block conteudo %}
+    <main>
+        <div class="container-fluid">
+            <div id="conta-nova">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h3 class="main-title">Conta</h3>
+                        </div>
+                        <!-- Dividindo em duas colunas da mesma largura -->
+                        <div class="col-md-6">
+                            <img class="img-fluid" src="{% static 'img/agencia.jpg' %}" alt="Fachada de uma empresa">
+                        </div>
+                        <div class="col-md-6">
+                            <h3 class="about-title">Conta Financeira</h3>
+                            <form method="POST">
+                                {% csrf_token %}
+                                <p>Tem certeza que quer excluir a conta {{ object }}</p>
+                                {{ buttons }}
+                                <button type="submit" class="btn btn-danger">Confirma??</button>
+                                <button type="button" class="btn btn-warning">
+                                    <a href="{% url 'contabilidade:homepage' %}">Cancelar</a>
+                                </button>
+                                {{ endbuttons }}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    {% endblock conteudo %}
+</body>
+
+</html>

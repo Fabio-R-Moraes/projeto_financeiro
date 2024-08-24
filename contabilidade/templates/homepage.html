@@ -16,8 +16,17 @@
                     <img src="{% static 'img/banner1.png' %}" class="d-block w-100"
                         alt="Lista de Contas Financeiras disponíveis">
                     <div class="carousel-caption d-none-d-md-block">
+                        <h2>Próximos pagamentos/recebimentos</h2>
+                        <p>Aqui aparecem os próximos pagamentos e recebimentos financeiros.</p>
+                        <a href="#" class="main-btn">Nova transação</a>
+                    </div>
+                </div>
+                <div class="carousel-item" data-bs-interval="60000">
+                    <img src="{% static 'img/banner2.png' %}" class="d-block w-100"
+                        alt="Lista de Contas Financeiras disponíveis">
+                    <div class="carousel-caption d-none-d-md-block">
                         <h2>Contas Financeiras disponíveis</h2>
-                        <table class="table table-hover">
+                        <table class="table table-hover table-sm">
                             <thead class="table-dark">
                                 <tr>
                                     <th scope="col">Conta</th>
@@ -41,23 +50,14 @@
                                     <td>Inativa</td>
                                     {% endif %}
                                     <td>
-                                        <a class="btn btn-warning btn-sm" href="#">Editar</a>
-                                        <a class="btn btn-danger  btn-sm" href="#">Excluir</a>
+                                        <a class="btn btn-warning btn-sm" href="{% url 'contabilidade:alterar_conta' reg.pk %}">Editar</a>
+                                        <a class="btn btn-danger  btn-sm" href="{% url 'contabilidade:excluir_conta' reg.pk %}">Excluir</a>
                                     </td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
                         </table>
-                        <a href="#" class="main-btn">Ver Portfólio</a>
-                    </div>
-                </div>
-                <div class="carousel-item" data-bs-interval="60000">
-                    <img src="{% static 'img/banner2.png' %}" class="d-block w-100"
-                        alt="Lista de Contas Financeiras disponíveis">
-                    <div class="carousel-caption d-none-d-md-block">
-                        <h2>Gostou do site?</h2>
-                        <p>Quem sabe não queira algo parecido? Vamos conversar...</p>
-                        <a href="#" class="main-btn">Entre em contato</a>
+                        <a href="{% url 'contabilidade:nova_conta' %}" class="main-btn">Nova Conta</a>
                     </div>
                 </div>
                 <div class="carousel-item" data-bs-interval="30000">
