@@ -1,0 +1,35 @@
+{% load static %}
+<!-- Portfólio -->
+<div id="portfolio-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="main-title">Conheça nossos projetos</h3>
+            </div>
+            <div class="col-md-12" id="filter-btn-box">
+                <button class="main-btn filter-btn active" id="all-btn">Todos</button>
+                <button class="main-btn filter-btn" id="fin-btn">Financeiro</button>
+                <button class="main-btn filter-btn" id="lot-btn">Loterias</button>
+                <button class="main-btn filter-btn" id="esp-btn">Esportes</button>
+            </div>
+            <div class="col-md-4 portfolio-box fin">
+                <img src="{% static 'img/proj_financeiro.jpg' %}" alt="Projeto Financeiro" class="img-fluid">
+            </div>
+            <div class="col-md-4 portfolio-box esp">
+                <img src="{% static 'img/proj_futebol.jpg' %}" alt="Projeto Futebol" class="img-fluid">
+            </div>
+            <div class="col-md-4 portfolio-box lot">
+                <img src="{% static 'img/proj_lotofacil.jpg' %}" alt="Projeto LotoFacil" class="img-fluid">
+            </div>
+            <div class="col-md-4 portfolio-box lot">
+                <img src="{% static 'img/proj_lotomania.jpg' %}" alt="Projeto LotoMania" class="img-fluid">
+            </div>
+            <div class="col-md-4 portfolio-box lot">
+                <img src="{% static 'img/proj_megasena.jpg' %}" alt="Projeto MegaSena" class="img-fluid">
+            </div>
+            <div class="col-md-4 portfolio-box lot">
+                <img src="{% static 'img/proj_timemania.jpg' %}" alt="Projeto TimeMania" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</div>
